@@ -50,3 +50,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 });
+const cuadricula = document.querySelector(".cuadricula");
+const resultado = document.querySelector("#resultado");
+var cartasEscogidas  = []:
+var cartasEscogidasId = [];
+var cartasGanadas = [];
+function crearTablero () {
+  for (let i = 0; i< cardsAdj.length; i++) {
+    var carta = document.createElement ('img');
+    carta.setAttribute('src', 'image/reverso.png');
+    carta.setAttribute('data-id', i);
+    carta.addEventListener('click', voltearcarta);
+    cuadricula.appendChild(carta);
+   }
+  }  
+});
+
