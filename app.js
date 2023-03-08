@@ -49,20 +49,29 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "image/6.png"
     }
   ];
-});
-const cuadricula = document.querySelector(".cuadricula");
-const resultado = document.querySelector("#resultado");
-var cartasEscogidas  = []:
-var cartasEscogidasId = [];
-var cartasGanadas = [];
-function crearTablero () {
-  for (let i = 0; i< cardsAdj.length; i++) {
-    var carta = document.createElement ('img');
-    carta.setAttribute('src', 'image/reverso.png');
-    carta.setAttribute('data-id', i);
-    carta.addEventListener('click', voltearcarta);
-    cuadricula.appendChild(carta);
-   }
-  }  
-});
 
+  const cuadricula = document.querySelector(".cuadricula");
+  const resultado = document.querySelector("#resultado");
+  var cartasEscogidas = [];
+  var cartasEscogidasId = [];
+  var cartasGanadas = [];
+  function crearTablero() {
+    for (let i = 0; i < cardsAdj.length; i++) {
+      var carta = document.createElement("img");
+      carta.setAttribute("src", "image/12.png");
+      carta.setAttribute("data-id", i);
+      carta.addEventListener("click", voltearcarta);
+      cuadricula.appendChild(carta);
+    }
+  }
+  function voltearcarta() {
+    var cardId = this.getAttribute("data-id");
+    cartasEscogidas.push(cardsAdj[cardId].name);
+    cartasEscogidasId.push(cardId);
+    this.setAttribute("src", cardsAdj[cardId].img);
+    if (cartasEscogidas.length === 2) {
+      setTimeout(verificarPareja, 1000);
+    }
+  }
+  crearTablero();
+});
